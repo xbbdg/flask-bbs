@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reset Password</title>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/center.css">
+</head>
+
+<body>
+
+    <div class="center signin">
+        <form action="{{ url_for('.reset') }}" method="post">
+
+            <div class="input-group">
+              <span class="input-group-addon">
+                  Token
+              </span>
+              <input type="text" class="form-control hide" name="token" value={{token}}>
+            </div>
+            <br>
+            <div class="input-group">
+              <span class="input-group-addon">
+                  密码
+              </span>
+              <input type="password" class="form-control" placeholder="password" name="password">
+            </div>
+
+            <br>
+
+            <div class="form-actions ">
+                <button type="submit" class="btn btn-primary login-btn">
+                    重置密码
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</body>
+</html>

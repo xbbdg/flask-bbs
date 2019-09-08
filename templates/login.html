@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/center.css">
+</head>
+
+<body>
+
+    <div class="center signin">
+        <form action="{{ url_for('.login') }}" method="post">
+            <div class="input-group">
+              <span class="input-group-addon">
+                  用户
+              </span>
+              <input type="text" class="form-control" placeholder="Username" name="username">
+            </div>
+
+            <br>
+
+            <div class="input-group">
+              <span class="input-group-addon">
+                  密码
+              </span>
+              <input type="password" class="form-control" placeholder="password" name="password">
+            </div>
+            <br>
+            <div class="form-actions ">
+                <button type="submit" class="btn btn-primary login-btn">
+                    登 录
+                </button>
+            </div>
+
+        </form>
+
+        <br>
+        <!--        注册按钮-->
+        <a href="/register/view">
+            <button type="button" class="btn btn-primary">
+            注册
+            </button>
+        </a>
+
+<!--        忘记密码-->
+        <a href="/reset/forget">
+            <button type="button" class="btn btn-primary">
+            忘记密码
+            </button>
+        </a>
+
+
+    </div>
+</body>
+</html>

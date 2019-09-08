@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+
+{#    bootstrap#}
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{#    my css#}
+    <link rel="stylesheet" href="/static/css/center.css">
+    <link rel="stylesheet" href="/static/css/topic.css">
+<head>
+<body>
+
+{#    导航栏#}
+    <nav class="navbar navbar-info blue">
+        <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ url_for('index.index') }}">
+              B B S
+            </a>
+        </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <li>
+            <a href="{{ url_for('index.index') }}" class="font-blue">
+                首页
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('index.profile') }}" class="font-blue">
+                个人主页
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('setting.index') }}" class="font-blue">
+                用户设置
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('mail.index') }}" class="font-blue">
+                私信
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('index.register_view') }}" class="font-blue">
+                注册
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('index.login_view') }}" class="font-blue">
+                登录
+            </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{#    主要内容#}
+    <div class="main">
+        {% block main %}
+
+        {% endblock %}
+
+        <div class="sidebar">
+            <div class="panel-info">
+                <div class="panel-heading">
+                    个人信息
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="user-info">
+                        <img class="user-avatar" src="{{ user.image }}">
+                        <div class=" vertical-center user-name">
+                            {{user.username}}
+                        </div>
+                    </div>
+
+
+                    <br>
+
+                    <div class="user-signiture">
+                        {{ user.signature }}
+                    </div>
+
+                    <br>
+                    <a href="/topic/new?board_id={{ bid }}" class="btn btn-danger">
+                        <span class="span-success">发布话题</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+
+</script>
+
+</body>

@@ -1,0 +1,55 @@
+{% extends "topic/base.html" %}
+
+
+{% block title %}
+    Mail Detail
+{% endblock %}
+
+{% block main %}
+    <div class="main-left">
+        <div class="panel panel-info topic-panel ">
+    <!--        header-->
+            <div class="panel-heading ready positon-relative ready-info">
+                <span class="vertical-center">站内信</span>
+            </div>
+    <!--        Panel 内容-->
+        <div class="panel-body hide-border">
+<!--        go-topic 标题和信息-->
+            <div class="go hide-border">
+    <!--                标题-->
+                    <div class="go-title">
+
+                        <div class="center">
+                            <h1>
+                                {{ message.title }}
+                            </h1>
+                        </div>
+                    </div>
+    <!--                topic 信息-->
+                    <div class="go-info">
+                        <div class="center">
+                            <div class="rush label label-info">
+                                发件人: {{ message.sender().username }}
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+<!--        topic 的主要内容-->
+            <div class=''>
+                <div class="markdown-text">{{ message.content }}</div>
+            </div>
+
+        </div>
+
+        </div>
+
+        </div>
+
+
+{% endblock %}
+
+

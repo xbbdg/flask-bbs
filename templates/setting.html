@@ -1,0 +1,92 @@
+{% extends "topic/base.html" %}
+
+{% block title %}
+    Setting
+{% endblock%}
+
+{% block main %}
+    <div class="main-left">
+        <div class="panel panel-info topic-panel ">
+    <!--        header-->
+            <div class="panel-heading ready positon-relative ready-info">
+                <span class="vertical-center">用户信息</span>
+            </div>
+    <!--        Panel 内容-->
+            <div class="panel-body">
+                <form action="{{ url_for('.change') }}" method="post">
+                    <div class="input-group setting-input-text">
+                            <span class="input-group-addon" id="sizing-addon2">用户名</span>
+                            <input type="text" name="name" class="form-control " placeholder="{{ user.username }}">
+                    </div>
+                    <br>
+                <div class="setting-signature positon-relative">
+                    <span class=" vertical-center">
+                        个性签名
+                    </span>
+                    <textarea class="setting-signature-text"
+                              name="signature"
+                              cols="20"
+                              rows="2"
+                              placeholder="请点击输入"></textarea>
+                </div>
+                    <br>
+                <button class="btn btn-info seting-btn" type="submit">
+                    保存设置
+                </button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="panel panel-info topic-panel ">
+    <!--        header-->
+            <div class="panel-heading ready positon-relative ready-info">
+                <span class="vertical-center ">更改密码</span>
+            </div>
+
+    <!--        Panel 内容-->
+            <div class="panel-body">
+                <form action="{{ url_for('.change_password') }}" method="post">
+                    <div class="input-group setting-input-text">
+                            <span class="input-group-addon" id="sizing-addon2">当前密码</span>
+                            <input type="password" name="old_pass" class="form-control " placeholder="">
+                    </div>
+                    <br>
+                    <div class="input-group setting-input-text">
+                            <span class="input-group-addon">新密码</span>
+                            <input type="password" name="new_pass" class="form-control" placeholder="">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-info">更改</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="panel panel-info topic-panel ">
+    <!--        header-->
+            <div class="panel-heading ready positon-relative ready-info">
+                <span class="vertical-center">上传头像</span>
+            </div>
+
+    <!--        Panel 内容-->
+            <div class="panel-body">
+                <form
+                        action="{{ url_for('.change_avatar') }}"
+                        method="post"
+                        enctype="multipart/form-data">
+
+                    <input type="file" name="avatar" class="setting-input-text">
+                    <br>
+                    <button type="submit" class="btn btn-info">
+                        上传头像
+                    </button>
+
+                </form>
+            </div>
+
+            </div>
+
+        </div>
+
+{% endblock %}

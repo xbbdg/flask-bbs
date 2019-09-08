@@ -1,0 +1,7 @@
+.idea
+*.pyc
+log.txt
+secret.py
+https
+bbs.sh
+resume.html

@@ -1,0 +1,73 @@
+{% extends "topic/base.html" %}
+
+
+{% block title %}
+    论坛主页
+{% endblock%}
+
+{% block main %}
+{#    左侧主要内容#}
+    <div class="panel panel-info topic-panel hide-border">
+<!--        board 切换-->
+        <div class="panel-heading ready">
+            <a href="/topic"
+               class="btn btn-info">
+                All
+            </a>
+
+            {% for b in bs %}
+                <a href="/topic?board_id={{ b.id }}"
+                   class="btn btn-info">
+                    {{ b.title }}
+                </a>
+            {% endfor %}
+        </div>
+
+<!--        Panel 内容-->
+        <div class="panel-body">
+            {% for t in ms %}
+<!--            每个 go-topic 内容-->
+                <div class="go">
+    <!--                标题-->
+                    <div class="go-title">
+    <!--                    板块信息-->
+
+                        <div class="center">
+                            <h1>
+                                <a href="{{ url_for('topic.detail', id=t.id) }}">
+                                    {{ t.title }}
+                                </a>
+                            </h1>
+                        </div>
+                    </div>
+    <!--                topic 信息-->
+                    <div class="go-info">
+                        <div class="center">
+                            <div class="rush label label-info">
+                                发布者：
+                                <span> {{ t.user().username  }}</span>
+                            </div>
+                            <div class="rush label label-info">
+                                {{ t.replies() | count }}回复
+                            </div>
+                            <div class="rush label label-info">
+                                {{ t.views }}点击
+                            </div>
+                        </div>
+                    </div>
+    <!--                点赞-->
+                    <div class="goal">
+                        <a href="">
+                            <span class="glyphicon glyphicon-heart"></span>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

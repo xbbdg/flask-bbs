@@ -1,0 +1,119 @@
+{% extends "topic/base.html" %}
+
+
+{% block title %}
+    Profile
+{% endblock%}
+
+
+
+{% block main %}
+    <div class="main-left">
+        <div class="panel panel-info topic-panel ">
+    <!--        header-->
+            <div class="panel-heading ready positon-relative ready-info">
+                <span class="vertical-center">个人主页</span>
+            </div>
+    <!--        Panel 内容-->
+            <div class="panel-body">
+                <img src="/static/img/g.jpg" class="img-circle profile-img ">
+                <span>{{ user.username }}</span>
+                <span>注册时间: {{ user.created_time | format_time }}</span>
+            </div>
+
+        </div>
+
+        <div class="panel panel-info topic-panel ">
+    <!--        header-->
+            <div class="panel-heading ready positon-relative ready-info">
+                <span class="vertical-center ">最近创建的话题</span>
+            </div>
+
+    <!--        Panel 内容-->
+            <div class="panel-body">
+                {% for tpc in created_topic %}
+
+                <div class="profile-topic positon-relative">
+                    <div class="topic-cell vertical-center">
+
+                        <div class="topic-info">
+                            <img src="{{ user.image }}" class="profile-img">
+                            <span class="small">
+                                {{ tpc.reply_count() }}回复
+                            </span>
+                            <span class="small">/</span>
+                            <span class="small">
+                                  {{tpc.views}}点击
+                            </span>
+                        </div>
+
+                        <div class="topic-title">
+                            <a href="/topic/{{tpc.id}}" title={{tpc.title}}>
+                                <h3 class="">{{ tpc.title }}</h3>
+                            </a>
+                        </div>
+
+                        <div class="topic-reply">
+                            <img src="{{ tpc.last_reply_user().image }}" class="profile-img">
+                            <span>
+                            {{tpc.last_active_time()}}小时前
+                        </span>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <div class="panel panel-info topic-panel ">
+    <!--        header-->
+            <div class="panel-heading ready positon-relative ready-info">
+                <span class="vertical-center">最近参与的话题</span>
+            </div>
+
+    <!--        Panel 内容-->
+            <div class="panel-body">
+                {% for tpc in replied_topic %}
+
+                <div class="profile-topic positon-relative">
+                    <div class="topic-cell vertical-center">
+
+                        <div class="topic-info">
+                            <img src="{{ user.image }}" class="profile-img">
+                            <span>
+                                {{tpc.reply_count()}}回复
+                            </span>
+                            <span>/</span>
+                            <span>
+                                  {{tpc.views}}点击
+                            </span>
+                        </div>
+
+                        <div class="topic-title">
+                            <a href="/topic/{{tpc.id}}" title={{tpc.title}}>
+                                <h3 class="">{{ tpc.title }}</h3>
+                            </a>
+                        </div>
+
+                        <div class="topic-reply">
+                            <img src="{{ tpc.last_reply_user().image }}" class="profile-img">
+                            <span>
+                            {{ tpc.last_active_time() }}小时前
+                        </span>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+
+            </div>
+
+    </div>
+
+{% endblock%}

@@ -1,0 +1,127 @@
+{% extends "topic/base.html" %}
+
+
+{% block title %}
+    Mail
+{% endblock%}
+
+{% block main %}
+        <div class="main-left">
+            <div class="panel panel-info topic-panel ">
+        <!--        header-->
+                <div class="panel-heading ready positon-relative ready-info">
+                    <span class="vertical-center">站内信</span>
+                </div>
+        <!--        Panel 内容-->
+            <div class="panel-body">
+                <form action="{{ url_for('.add') }}" method="post">
+                    <div class="input-group setting-input-text">
+                            <span class="input-group-addon" id="sizing-addon2">收件人</span>
+                            <input type="text" name="receiver_name" class="form-control " placeholder="receiver_name">
+                    </div>
+                    <br>
+                    <div class="input-group setting-input-text">
+                            <span class="input-group-addon" id="sizing-addon2">标题</span>
+                            <input type="text" name="title" class="form-control " placeholder="title">
+                    </div>
+
+                <div class="setting-signature positon-relative">
+                    <textarea class="setting-signature-text"
+                              name="content"
+                              cols="40"
+                              rows="20"
+                              placeholder="请点击输入"></textarea>
+                </div>
+                    <br>
+                <button class="btn btn-info seting-btn" type="submit">
+                    发送
+                </button>
+                </form>
+            </div>
+
+            </div>
+
+            <div class="panel panel-info topic-panel ">
+        <!--        header-->
+                <div class="panel-heading ready positon-relative ready-info">
+                    <span class="vertical-center ">收到的信息</span>
+                </div>
+
+        <!--        Panel 内容-->
+                <div class="panel-body">
+
+                    {% for r in received %}
+
+                    <div class="profile-topic positon-relative">
+                        <div class="topic-cell vertical-center">
+
+                            <div class="topic-info">
+                                <img src="{{ r.sender().image }}" class="profile-img">
+                            </div>
+
+                            <div class="topic-title">
+                                <a href="{{ url_for('.view', id=r.id) }}" title={{r.title}}>
+                                    <h3 class="">{{ r.title }}</h3>
+                                </a>
+                            </div>
+
+                            <div class="topic-reply">
+                                <span>
+                                {{ r.last_active_time() }}小时前
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+            <div class="panel panel-info topic-panel ">
+        <!--        header-->
+                <div class="panel-heading ready positon-relative ready-info">
+                    <span class="vertical-center">发送的信息</span>
+                </div>
+
+        <!--        Panel 内容-->
+                <div class="panel-body">
+
+                    {% for s in sended %}
+
+                    <div class="profile-topic positon-relative">
+                        <div class="topic-cell vertical-center">
+
+                            <div class="topic-info">
+                                <img src="{{ s.sender().image }}" class="profile-img">
+                            </div>
+
+                            <div class="topic-title">
+                                <a href="{{ url_for('.view', id = s.id) }}" title={{s.title}}>
+                                    <h3 class="">{{ s.title }}</h3>
+                                </a>
+                            </div>
+
+                            <div class="topic-reply">
+                                <span>
+                                {{ s.last_active_time()}}小时前
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                </div>
+
+        </div>
+
+{% endblock %}
+
+
